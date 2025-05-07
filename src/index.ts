@@ -1,7 +1,20 @@
-import { Elysia } from "elysia";
+import { Elysia,t } from "elysia";
 
-const app = new Elysia().get("/", () => "Hello Elysia").listen(3000);
+const app = new Elysia()
+  .onRequest((cx)=>{
+    console.log(cx.request.method, cx.request.url);
+  })
+  .get("/", ({ server, request }) => { 
+    const info = server?.requestIP(request);
+    return info;
+  })
+  .onError(({ code }) => {
+    if (code === 'NOT_FOUND') {
+      return '何もなかった'
+    }
+  })
+  .listen(3000);
 
-console.log(
-  `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
-);
+console.log("Server is running on http://localhost:3000");
+
+export type App = typeof app;
