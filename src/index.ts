@@ -1,20 +1,7 @@
-import { Elysia,t } from "elysia";
+import {Hono} from "hono";
 
-const app = new Elysia()
-  .onRequest((cx)=>{
-    console.log(cx.request.method, cx.request.url);
-  })
-  .get("/", ({ server, request }) => { 
-    const info = server?.requestIP(request);
-    return info;
-  })
-  .onError(({ code }) => {
-    if (code === 'NOT_FOUND') {
-      return '何もなかった'
-    }
-  })
-  .listen(3000);
+const app = new Hono();
 
-console.log("Server is running on http://localhost:3000");
-
-export type App = typeof app;
+const b = Bun.serve({
+  fetch:app.fetch,
+})
