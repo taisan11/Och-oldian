@@ -1,15 +1,7 @@
-# Elysia with Bun runtime
-
-## Getting Started
-To get started with this template, simply paste this command into your terminal:
-```bash
-bun create elysia ./elysia-example
-```
-
-## Development
-To start the development server run:
-```bash
-bun run dev
-```
-
-Open http://localhost:3000/ with your browser to see the result.
+Och Oldianとは
+Bun特化にし、パフォーマンスを向上。
+古い機能、最新の機能両方を追及。
+保存方式も古く、新しい。
+meilisearchを使用した使い心地のよい検索機能。
+分散されたサーバーを前提にした、フロントエンド、バックエンド。
+が特徴の不安定な掲示板です。
